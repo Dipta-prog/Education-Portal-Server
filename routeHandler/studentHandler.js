@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const todoSchema = require("../schemas/todoSchema");
+const studentSchema = require("../schemas/studentSchema");
 
-const Todo = new mongoose.model("Todo", todoSchema);
+const Student = new mongoose.model("Student", studentSchema);
 // Get all tha todos
 
 router.get("/", async (req, res) => {
-  await Todo.find({}, (err, data) => {
+  await Student.find({}, (err, data) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -28,8 +28,8 @@ router.get("/:id", async (req, res) => {});
 // post a todo
 
 router.post("/", (req, res) => {
-  const newTodo = new Todo(req.body);
-  newTodo.save((err) => {
+  const newStudent = new Student(req.body);
+  newStudent.save((err) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -45,7 +45,7 @@ router.post("/", (req, res) => {
 // post multiple todo
 
 router.post("/all", async (req, res) => {
-  await Todo.insertMany(req.body, (err) => {
+  await Student.insertMany(req.body, (err) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -62,7 +62,7 @@ router.post("/all", async (req, res) => {
 // put todo update
 
 router.put("/:id", async (req, res) => {
-  const rasult = await Todo.findByIdAndUpdate(
+  const rasult = await Student.findByIdAndUpdate(
     { _id: req.params.id },
     {
       $set: {
@@ -93,7 +93,7 @@ router.put("/:id", async (req, res) => {
 // delete todo
 
 router.delete("/:id", async (req, res) => {
-  await Todo.deleteOne({ _id: req.params.id }, (err) => {
+  await Student.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
       res.status(500).json({
         error: err,
