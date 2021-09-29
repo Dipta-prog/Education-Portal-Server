@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-//const MongoClient = require('mongodb').MongoClient;
+//const MongoClient = require('mongodb').MongoClient;...
 const studentHandler = require("./routeHandler/studentHandler");
 
 // declier the port
