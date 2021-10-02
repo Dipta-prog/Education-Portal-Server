@@ -14,9 +14,9 @@ app.use(cors());
 require("dotenv").config();
 console.log(process.env.DB_USER);
 ////database connection with mongose
-const uri =
-  " mongodb+srv://educationPortals:ArifulIslamRaju000@cluster0.yaeov.mongodb.net/educationPortal?retryWrites=true&w=majority";
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.yaeov.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+// const uri =
+//   " mongodb+srv://educationPortals:ArifulIslamRaju000@cluster0.yaeov.mongodb.net/educationPortal?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.yaeov.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 mongoose
   .connect(uri, {
     useNewUrlParser: true,
@@ -40,4 +40,4 @@ app.get("/", (req, res) => {
   res.send("Now My Server is  Running");
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
