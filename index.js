@@ -3,10 +3,19 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 //const MongoClient = require('mongodb').MongoClient;
 const todoHandler = require("./routeHandler/todoHandler");
+const departmentHandler = require("./routeHandler/departmentHandler")
+const eventHandler = require("./routeHandler/eventHandler")
+const adminStudentDataHandler = require("./routeHandler/adminStudentDataHandler")
+const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandler")
+const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
+
+
+
+// dotenv config
 require('dotenv').config()
 
 
-// declier the port
+// declare the port
 const port = 1000;
 // express app initialization
 const app = express();
@@ -27,6 +36,18 @@ mongoose
 // application routes
 app.use("/todo", todoHandler);
 
+app.use("/department", departmentHandler);
+
+app.use("/event", eventHandler);
+
+app.use("/admin", adminStudentDataHandler);
+
+app.use("/admin", adminTeachersDataHandler);
+
+app.use("/admin", newAdminDataHandler);
+
+
+
 // function err handler
 function errHandelar(err, req, res, next) {
   if (res.headersSet) {
@@ -36,7 +57,7 @@ function errHandelar(err, req, res, next) {
 }
 // open
 app.get("/", (req, res) => {
-  res.send("Now My Server is  Running");
+  res.send("Server Running Successfully");
 });
 
 app.listen(port);
