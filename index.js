@@ -10,7 +10,6 @@ const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandle
 const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
 
 
-
 // dotenv config
 require('dotenv').config()
 
@@ -21,6 +20,9 @@ const port = 1000;
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+
+console.log(process.env.DB_NAME);
 
 // database connection with mongoose
 const uri =
