@@ -8,6 +8,7 @@ const eventHandler = require("./routeHandler/eventHandler")
 const adminStudentDataHandler = require("./routeHandler/adminStudentDataHandler")
 const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandler")
 const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
+const teacherCourseDataHandler = require('./routeHandler/teacherCourseDataHandler')
 
 
 // dotenv config
@@ -47,6 +48,8 @@ app.use("/admin", adminStudentDataHandler);
 app.use("/admin", adminTeachersDataHandler);
 
 app.use("/admin", newAdminDataHandler);
+
+app.use('/courseInformation', teacherCourseDataHandler);
 
 
 

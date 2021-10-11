@@ -6,7 +6,6 @@ const newAdminDataSchema = require("../schemas/newAdminDataSchema");
 const NewAdminData = new mongoose.model("NewAdminData", newAdminDataSchema);
 
 // Get all the admin
-
 router.get("/allAdmin", async (req, res) => {
   await NewAdminData.find({}, (err, data) => {
     if (err) {
@@ -24,7 +23,6 @@ router.get("/allAdmin", async (req, res) => {
 });
 
 // post a NewAdminData
-
 router.post("/addAdmin", (req, res) => {
     const tempNewAdminData = new NewAdminData(req.body);
     tempNewAdminData.save((err) => {
