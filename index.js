@@ -3,16 +3,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 //const MongoClient = require('mongodb').MongoClient;
 const todoHandler = require("./routeHandler/todoHandler");
-const departmentHandler = require("./routeHandler/departmentHandler")
-const eventHandler = require("./routeHandler/eventHandler")
-const adminStudentDataHandler = require("./routeHandler/adminStudentDataHandler")
-const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandler")
-const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
-
+const departmentHandler = require("./routeHandler/departmentHandler");
+const eventHandler = require("./routeHandler/eventHandler");;
+const adminStudentDataHandler = require("./routeHandler/adminStudentDataHandler");
+const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandler");
+const newAdminDataHandler = require("./routeHandler/newAdminDataHandler");
+const adminCourseDataHandler = require("./routeHandler/adminCourseDataHandler");
+const userHandler = require("./routeHandler/userHandler/userHandler");
 
 
 // dotenv config
-require('dotenv').config()
+require('dotenv').config();
 
 
 // declare the port
@@ -45,6 +46,11 @@ app.use("/admin", adminStudentDataHandler);
 app.use("/admin", adminTeachersDataHandler);
 
 app.use("/admin", newAdminDataHandler);
+
+app.use("/course", adminCourseDataHandler);
+
+app.use("/user", userHandler);
+
 
 
 
