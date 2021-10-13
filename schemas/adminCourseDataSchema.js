@@ -4,15 +4,27 @@ const courseSchema = mongoose.Schema({
     courseName: {
         type: String,
     },
-    details: {
+    courseDetails: {
         type: String,
     },
     courseCode: {
+        type: Number
+    },
+    departmentName: {
         type: String
     },
-    // image: {
-    //     type: String
-    // },
+    image: {
+        type: String
+    },
+    courseFinishedDate: {
+        type: Date
+    },
+    courseFinishedLength: {
+        type: Number
+    },
+    courseCredit: {
+        type: Number
+    },
     date: {
         type: Date,
         default: Date.now,
