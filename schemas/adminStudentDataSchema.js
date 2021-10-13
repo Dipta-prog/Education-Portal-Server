@@ -41,7 +41,6 @@ const adminStudentDataSchema = mongoose.Schema({
     image: {
         type: String,
     },
-
     submitDate: {
         type: Date,
         default: Date.now
