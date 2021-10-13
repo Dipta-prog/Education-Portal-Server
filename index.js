@@ -8,7 +8,7 @@ const eventHandler = require("./routeHandler/eventHandler")
 const adminStudentDataHandler = require("./routeHandler/adminStudentDataHandler")
 const adminTeachersDataHandler = require("./routeHandler/adminTeachersDataHandler")
 const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
-
+const teacherCourseDataHandler = require('./routeHandler/teacherCourseDataHandler')
 
 
 // dotenv config
@@ -21,6 +21,9 @@ const port = 1000;
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+
+console.log(process.env.DB_NAME);
 
 // database connection with mongoose
 const uri =
@@ -45,6 +48,8 @@ app.use("/admin", adminStudentDataHandler);
 app.use("/admin", adminTeachersDataHandler);
 
 app.use("/admin", newAdminDataHandler);
+
+app.use('/courseInformation', teacherCourseDataHandler);
 
 
 
