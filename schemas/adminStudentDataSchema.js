@@ -38,7 +38,9 @@ const adminStudentDataSchema = mongoose.Schema({
     country: {
         type: String,
     },
-
+    image: {
+        type: String,
+    },
     submitDate: {
         type: Date,
         default: Date.now

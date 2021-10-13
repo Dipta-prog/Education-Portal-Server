@@ -16,7 +16,7 @@ router.get("/allAdmin", async (req, res) => {
     } else {
       res.status(200).json({
         result: data,
-        message: "NewAdminData was inserted successfully",
+        message: "NewAdminData was get successfully",
       });
     }
   });

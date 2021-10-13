@@ -10,9 +10,9 @@ const departmentSchema = mongoose.Schema({
     departmentCode: {
         type: String
     },
-    // image: {
-    //     type: String
-    // },
+    image: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now,
