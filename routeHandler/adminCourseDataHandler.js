@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const departmentSchema = require("../schemas/departmentSchema");
+const adminCourseDataSchema = require("../schemas/adminCourseDataSchema");
 
-const Department = new mongoose.model("Department", departmentSchema);
+const Course = new mongoose.model("Course", adminCourseDataSchema);
 
-// Get all tha allDepartment
+// Get all the Course
 router.get("/", async (req, res) => {
-  await Department.find({}, (err, data) => {
+  await Course.find({}, (err, data) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -22,8 +22,8 @@ router.get("/", async (req, res) => {
   });
 });
 ////
-router.get("/allDepartment", async (req, res) => {
-  await Department.find({}, (err, data) => {
+router.get("/allCourse", async (req, res) => {
+  await Course.find({}, (err, data) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -32,17 +32,17 @@ router.get("/allDepartment", async (req, res) => {
     } else {
       res.status(200).json({
         result: data,
-        message: "Department was inserted successfully",
+        message: "Course was get successfully",
       });
     }
   });
 });
 
-// post a department
+// post a Course
 
-router.post("/addDepartment", (req, res) => {
-  const newDepartment = new Department(req.body);
-  newDepartment.save((err) => {
+router.post("/addCourse", (req, res) => {
+  const newCourse = new Course(req.body);
+  newCourse.save((err) => {
     if (err) {
       res.status(500).json({
         error: err,
@@ -50,7 +50,7 @@ router.post("/addDepartment", (req, res) => {
       });
     } else {
       res.status(200).json({
-        message: "Department was inserted successfully",
+        message: "Course was inserted successfully",
       });
     }
   });
