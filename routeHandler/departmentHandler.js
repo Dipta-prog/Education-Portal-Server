@@ -6,7 +6,22 @@ const departmentSchema = require("../schemas/departmentSchema");
 const Department = new mongoose.model("Department", departmentSchema);
 
 // Get all tha allDepartment
-
+router.get("/", async (req, res) => {
+  await Department.find({}, (err, data) => {
+    if (err) {
+      res.status(500).json({
+        error: err,
+        status: false,
+      });
+    } else {
+      res.status(200).json({
+        rasult: data,
+        message: "Todo was inserted succesfully",
+      });
+    }
+  });
+});
+////
 router.get("/allDepartment", async (req, res) => {
   await Department.find({}, (err, data) => {
     if (err) {

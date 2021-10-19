@@ -11,13 +11,14 @@ const newAdminDataHandler = require("./routeHandler/newAdminDataHandler")
 const teacherCourseDataHandler = require('./routeHandler/teacherCourseDataHandler')
 const adminCourseDataHandler = require("./routeHandler/adminCourseDataHandler");
 const userHandler = require("./routeHandler/userHandler/userHandler");
+const studentHandler = require("./routeHandler/studentHandler");
+const studentCommentHandler = require("./routeHandler/studentCommentHandler");
+const departmentHandler = require("./routeHandler/departmentHandler");
 
 // dotenv config
 require('dotenv').config()
-
-
-// declare the port
 const port = 1000;
+
 // express app initialization
 const app = express();
 app.use(express.json());
@@ -55,10 +56,12 @@ app.use("/course", adminCourseDataHandler);
 
 app.use("/user", userHandler);
 
+app.use("/students", studentHandler);
+app.use("/studentComment", studentCommentHandler);
 
-
-
-// function err handler
+app.use("/department", departmentHandler);
+app.use("/course", adminCourseDataHandler);
+//// function err handelar
 function errHandelar(err, req, res, next) {
   if (res.headersSet) {
     return next(err);
