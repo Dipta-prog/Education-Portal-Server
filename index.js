@@ -72,4 +72,4 @@ app.get("/", (req, res) => {
   res.send("Server Running Successfully");
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
