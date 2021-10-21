@@ -18,16 +18,21 @@ const studentSchema = mongoose.Schema({
     studentName: String,
     studentPhoneNumber: String,
   },
-  studentSelactedCourse: {
-    basicElectricity: String,
-    basicElectronics: String,
-    javaScript: String,
-    php: String,
-    python: String,
+  loggedinUser: {
+    email: { type: String },
 
-    selactedCourse: {
-      course: String,
-    },
+    password: { type: String },
+    role: { type: String },
+    //success: true,
+  },
+  studentSelactedCourse: {
+    // basicElectricity: String,
+    // basicElectronics: String,
+    // javaScript: String,
+    // php: String,
+    // python: String,
+    subject: [],
+    course: String,
   },
 });
 //console.log(todoSchema);
