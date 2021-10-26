@@ -38,6 +38,11 @@ mongoose
   .catch((err) => console.log(err));
 
 // application routes
+
+app.get("/", (req, res) => {
+  res.send("Server Running Successfully");
+});
+
 app.use("/todo", todoHandler);
 
 app.use("/department", departmentHandler);
@@ -61,15 +66,17 @@ app.use("/studentComment", studentCommentHandler);
 app.use("/department", departmentHandler);
 app.use("/course", adminCourseDataHandler);
 //// function err handelar
-function errHandelar(err, req, res, next) {
+function errHandler(err, req, res, next) {
   if (res.headersSet) {
     return next(err);
   }
   res.status(500).json({ error: err });
 }
-// open
-app.get("/", (req, res) => {
-  res.send("Server Running Successfully");
-});
+
+app.use(errHandler)
+
+
+
+
 
 app.listen(process.env.PORT || port);

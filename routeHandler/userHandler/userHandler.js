@@ -34,20 +34,20 @@ router.post("/signup", async(req, res) => {
 
   router.post("/login", async (req, res) =>{
 
+    
     try{
-    const user = await User.find({ username: req.body.userName});
+    const user = await User.find({ userName: req.body.userName});
     if (user && user.length> 0) {
     const isPassValid = await bcrypt.compare(req.body.password, user[0].password);
-
+    
     if(isPassValid){
       //token generate
        const token = jwt.sign({
-          username: user[0].userName,
+          userName: user[0].userName,
           userId: user[0].userId,
        }, process.env.PRIVATE_KEY, {
          expiresIn: '1h'
        } );
-
        res.status(200).json({
           "access_token": token,
           "message": "Login Successful"

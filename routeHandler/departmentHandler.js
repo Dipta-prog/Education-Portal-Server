@@ -56,4 +56,22 @@ router.post("/addDepartment", (req, res) => {
     });
   });
 
+
+  // delete a department
+
+  router.delete("/:id", async (req, res) => {
+    await Department.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).json({
+          error: err,
+          status: false,
+        });
+      } else {
+        res.status(200).json({
+          message: "department delete successfully",
+        });
+      }
+    });
+  });
+
   module.exports = router;
