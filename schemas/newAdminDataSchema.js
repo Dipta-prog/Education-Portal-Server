@@ -14,7 +14,9 @@ const newAdminDataSchema = mongoose.Schema({
     password: {
         type: String,
     },
-    
+    userName: {
+        type: String,
+    }, 
     submitDate: {
         type: Date,
         default: Date.now

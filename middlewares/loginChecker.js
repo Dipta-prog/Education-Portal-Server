@@ -6,8 +6,8 @@ const loginChecker = (req, res, next) => {
         const token = authorization.split(' ')[1];
         const decoded = jwt.verify(token, process.env.PRIVATE_KEY);
         console.log(decoded)
-        const { username, userId } = decoded;
-        req.username = username;
+        const { email, userId } = decoded;
+        req.email = email;
         req.userId = userId;
         next();
     } catch(err) {
