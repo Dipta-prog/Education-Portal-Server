@@ -8,7 +8,7 @@ const AdminStudentData = new mongoose.model("AdminStudentData", adminStudentData
 
 // Get all the allStudent
 
-router.get("/allStudent", loginChecker, async (req, res) => {
+router.get("/allStudent", async (req, res) => {
   console.log(req.userName)
   await AdminStudentData.find({}, (err, data) => {
     if (err) {
