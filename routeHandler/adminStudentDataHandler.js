@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
+const loginChecker = require("../middlewares/loginChecker");
 const adminStudentDataSchema = require("../schemas/adminStudentDataSchema");
 
 const AdminStudentData = new mongoose.model("AdminStudentData", adminStudentDataSchema);
 
 // Get all the allStudent
 
-router.get("/allStudent", async (req, res) => {
+router.get("/allStudent", loginChecker, async (req, res) => {
+  console.log(req.userName)
   await AdminStudentData.find({}, (err, data) => {
     if (err) {
       res.status(500).json({
