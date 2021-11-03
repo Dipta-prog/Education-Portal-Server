@@ -31,8 +31,11 @@ const studentSchema = mongoose.Schema({
     // javaScript: String,
     // php: String,
     // python: String,
+    // coursFilters: [],
     subject: [],
     course: String,
+    // courseSubjectFilterss: { departmentName: String },
+    courseSubjectFilters: { departmentName: String },
   },
 });
 //console.log(todoSchema);
