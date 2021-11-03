@@ -59,7 +59,7 @@ router.post("/addDepartment", (req, res) => {
 
   // delete a department
 
-  router.delete("/:id", async (req, res) => {
+  router.delete("/delete/:id", async (req, res) => {
     await Department.deleteOne({ _id: req.params.id }, (err) => {
       if (err) {
         res.status(500).json({

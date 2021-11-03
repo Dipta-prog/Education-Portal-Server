@@ -56,4 +56,24 @@ router.post("/addCourse", (req, res) => {
     });
   });
 
+  // delete a Course
+
+  router.delete("/delete/:id", async (req, res) => {
+    await Course.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).json({
+          error: err,
+          status: false,
+        });
+      } else {
+        res.status(200).json({
+          message: "course was deleted successfully",
+        });
+      }
+    });
+  });
+
+
+
+
   module.exports = router;

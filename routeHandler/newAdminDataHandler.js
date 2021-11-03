@@ -39,4 +39,23 @@ router.post("/addAdmin", (req, res) => {
     });
   });
 
+
+  // delete a Admin
+
+  router.delete("/delete/:id", async (req, res) => {
+    await NewAdminData.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).json({
+          error: err,
+          status: false,
+        });
+      } else {
+        res.status(200).json({
+          message: "Admin was deleted successfully",
+        });
+      }
+    });
+  });
+
+
   module.exports = router;

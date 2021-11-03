@@ -17,7 +17,7 @@ router.get("/allTeacher", async (req, res) => {
     } else {
       res.status(200).json({
         result: data,
-        message: "AdminTeachersData was inserted successfully",
+        message: "AdminTeachersData was get successfully",
       });
     }
   });
@@ -40,5 +40,26 @@ router.post("/addTeacher", (req, res) => {
       }
     });
   });
+
+
+  // delete a Teacher
+
+  router.delete("/deleted/:id", async (req, res) => {
+    console.log(req.params)
+    await AdminTeachersData.deleteOne({ _id: req.params.id }, (err) => {
+      if (err) {
+        res.status(500).json({
+          error: err,
+          status: false,
+        });
+      } else {
+        res.status(200).json({
+          delete: "yes",
+          message: "Teacher was deleted successfully",
+        });
+      }
+    });
+  });
+
 
   module.exports = router;
